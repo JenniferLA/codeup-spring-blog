@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!-- add CSS file -->
+<head>
+    <th:block th:replace="~{partials/partials :: head (title = 'All Ads')}"></th:block>
+    <style>
+        h1 {
+            background-color: mistyrose;
+        }
+    </style>
+    <title>All Ads</title>
+</head>
+<body>
+<h1>AdLister Ads</h1>
+
+<!-- this attribute is like a foreach in Java and creates an entire div -->
+<header th:include="~{partials/partials :: header}"></header>
+<div th:each="ad : ${ads}">
+    <!-- TL is able to figure out the getter even tho it's private, so don't need to call getTitle()
+    Tl produces one of these divs for each ad-->
+    <h2 th:text="${ad.title}"></h2>
+    <p th:text="${ad.description}"></p>
+</div>
+
+<!-- add javascript file -->
+</body>
+</html>

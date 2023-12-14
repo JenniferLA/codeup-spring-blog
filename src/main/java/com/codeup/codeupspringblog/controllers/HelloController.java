@@ -2,6 +2,7 @@ package com.codeup.codeupspringblog.controllers;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -51,6 +52,12 @@ public class HelloController {
 public String helloMessage() {
     return String.format("hello from JSON! %s", LocalDateTime.now());
 }
+
+    @GetMapping("/hello/{name}")
+    public String sayHello(@PathVariable String name, Model model) {
+        model.addAttribute("name", name);
+        return "hello";
+    }
 
 // @GetMapping(path = "/hello/{personName}")
     // @ResponseBody
